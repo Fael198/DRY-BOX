@@ -16,25 +16,31 @@
 	
 	<!-- MENU -->
 	<ul>
-		<!-- Aba de Material -->
-	  <li class="dropdown">
-	  	<a href="" class="dropbtn">Material</a>
-	  	<div class="dropdown-content">
-	      <a href="cadastrarPeca.jsp">Cadastrar Peça No Estoque</a>
-	      <a href="inserirPeca.jsp">Inserir</a>
-	      <a href="darbaixaPeca.jsp">Dar Baixa</a>
-	    </div>
-	  </li>
-	  
-	  
-	  <!-- Aba de Estoque -->
-	  <li class="dropdown">
-	  	<a href="" class="dropbtn">Estoque</a>
-	  	<div class="dropdown-content">
-	      <a href="estoque.jsp">Consultar Peças Do Estoque</a>    
-	    </div>
-	  </li>
-	  </ul>
+	<!-- Aba de Material -->
+  <li class="dropdown">
+  	<a href="#" class="dropbtn">Material</a>
+  	<div class="dropdown-content">
+      <a href="cadastrarPeca.jsp">Cadastrar Peça No Estoque</a>
+      <a href="inserirPeca.jsp">Inserir</a>
+      <a href="darbaixaPeca.jsp">Dar Baixa</a>
+    </div>
+  </li>
+  
+  <!-- Aba de Usuários -->
+  <li class="dropdown">
+  	<a href="#" class="dropbtn">Usuários </a>
+  	<div class="dropdown-content">
+      <a href="cadastrarUsuario.jsp">Cadastro de novo usuário</a>
+      <a href="removerUsuario.jsp">Remover Usuário</a>
+      <a href="listarUsuarios.jsp">Exibir Usuários Cadastrados</a>
+    </div>
+  </li>
+  
+  <!-- Aba de Estoque -->
+  <li class="dropdown">
+  	<a href="estoque.jsp" class="dropbtn">Estoque</a>
+  </li>
+</ul> 
 	</br></br>
 	
 	

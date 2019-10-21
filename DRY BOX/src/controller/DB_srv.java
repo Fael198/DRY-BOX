@@ -46,6 +46,8 @@ public class DB_srv extends HttpServlet {
 		ModelMaterial mtr = new ModelMaterial();
 
 		int idu = 1;
+		String usuario = request.getParameter("usuario");
+		String senha = request.getParameter("senha");
 		
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
@@ -88,13 +90,14 @@ public class DB_srv extends HttpServlet {
 		
 		else if(op == 3) //FAZER LOGIN
 		{
-			String usuario = request.getParameter("usuario");
-			String senha = request.getParameter("senha");
+			//String usuario = request.getParameter("usuario");
+			//String senha = request.getParameter("senha");
 
 			usr.setUsuario(usuario);
 			usr.setSenha(senha);
 
 			usrDao.BuscarUsuarioDAO(usr);
+			usrDao.MudaStatusUsuarioDAO(usr);
 
 			
 			boolean vazio = usrDao.BuscarUsuarioDAO(usr);
@@ -162,6 +165,16 @@ public class DB_srv extends HttpServlet {
 				out.println("0");
 			}
 		}
+		
+		if(op == 9) //SAIR DO SISTEMA
+		{
+			usr.setUsuario(usuario);
+			usr.setSenha(senha);
+			
+			usrDao.SairSistemaUsuarioDAO(usr);
+		}
+		
+		
 		
 	}
 

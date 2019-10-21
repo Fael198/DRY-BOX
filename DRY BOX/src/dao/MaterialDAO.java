@@ -51,7 +51,7 @@ public class MaterialDAO {
 		Connection conex = con.conectar();
 		
 		try {
-			PreparedStatement ca = conex.prepareStatement("INSERT INTO material VALUES (0,?,?,?,?,?,?,?,NOW(),0,NOW(),0,0,0,0,0,0,0)");
+			PreparedStatement ca = conex.prepareStatement("INSERT INTO material VALUES (0,?,?,?,?,?,?,?,NOW(),0,NOW(),0,NOW(),0,NOW(),0,NOW(),0)");
 
 			ca.setString(1, mtr.getPart_number());
 			ca.setInt(2, mtr.getQuantidade());

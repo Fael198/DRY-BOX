@@ -25,12 +25,19 @@
     </div>
   </li>
   
+  <!-- Aba de Usuários -->
+  <li class="dropdown">
+  	<a href="#" class="dropbtn">Usuários </a>
+  	<div class="dropdown-content">
+      <a href="cadastrarUsuario.jsp">Cadastro de novo usuário</a>
+      <a href="removerUsuario.jsp">Remover Usuário</a>
+      <a href="listarUsuarios.jsp">Exibir Usuários Cadastrados</a>
+    </div>
+  </li>
+  
   <!-- Aba de Estoque -->
   <li class="dropdown">
-  	<a href="#" class="dropbtn">Estoque</a>
-  	<div class="dropdown-content">
-      <a href="estoque.jsp">Consultar Peças Do Estoque</a>    
-    </div>
+  	<a href="estoque.jsp" class="dropbtn">Estoque</a>
   </li>
 </ul>
 </br></br>

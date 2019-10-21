@@ -22,6 +22,8 @@ public class UsuarioDAO {
 		Connection conex = con.conectar();
 
 		try {
+			
+			//Verifica se usuario está cadastrado
 			PreparedStatement ca = conex.prepareStatement("SELECT id, usuario FROM usuario WHERE usuario=? and senha=?");
 			ca.setString(1, usr.getUsuario());
 			ca.setString(2, usr.getSenha());
@@ -79,6 +81,38 @@ public class UsuarioDAO {
 			
 		} catch (Exception e) {
 			System.out.println("Erro na remoção." + e.getMessage());
+		}
+	}
+	
+	public void MudaStatusUsuarioDAO(ModelUsuario usr)
+	{
+		Connection conex = con.conectar();
+		
+		try {
+			PreparedStatement ca = conex.prepareStatement("UPDATE usuario SET status = 1 WHERE usuario=? and senha=?");
+			ca.setString(1, usr.getUsuario());
+			ca.setString(2, usr.getSenha());
+			ca.execute();
+			
+		} catch (Exception e) {
+			System.out.println("Deu ruim" + e.getMessage());
+
+		}
+	}
+	
+	public void SairSistemaUsuarioDAO(ModelUsuario usr) 
+	{
+		Connection conex = con.conectar();
+		
+		try {
+			PreparedStatement ca = conex.prepareStatement("UPDATE usuario SET status = 0 WHERE usuario=? and senha=?");
+			ca.setString(1, usr.getUsuario());
+			ca.setString(2, usr.getSenha());
+			ca.execute();
+			
+		} catch (Exception e) {
+			System.out.println("Deu ruim" + e.getMessage());
+
 		}
 	}
 }

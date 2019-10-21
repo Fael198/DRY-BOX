@@ -25,14 +25,21 @@
     </div>
   </li>
   
-  <!-- Aba de Estoque -->
+  <!-- Aba de Usuários -->
   <li class="dropdown">
-  	<a href="#" class="dropbtn">Estoque</a>
+  	<a href="#" class="dropbtn">Usuários </a>
   	<div class="dropdown-content">
-      <a href="estoque.jsp">Consultar Peças Do Estoque</a>    
+      <a href="cadastrarUsuario.jsp">Cadastro de novo usuário</a>
+      <a href="removerUsuario.jsp">Remover Usuário</a>
+      <a href="listarUsuarios.jsp">Exibir Usuários Cadastrados</a>
     </div>
   </li>
-</ul>
+  
+  <!-- Aba de Estoque -->
+  <li class="dropdown">
+  	<a href="estoque.jsp" class="dropbtn">Estoque</a>
+  </li>
+</ul> 
 </br></br>
 	<div id='bordaConteudo'>
 		<div id='titulo' >Inserir Material</div>

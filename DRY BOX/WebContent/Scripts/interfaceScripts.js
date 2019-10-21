@@ -189,3 +189,22 @@ function abrirConBaixa(){
 		}
 	}
 }
+
+//SAIR DO SISTEMA
+function sair(){
+	
+	var ca = new XMLHttpRequest();
+	ca.onreadystatechange = function()
+	{
+		if(ca.readyState == 4){
+			if(ca.responseText == 1){
+				alert("Até mais " +usuario+ "!");
+				window.location.href = "Login.jsp";
+			}
+		}
+	}
+	
+	ca.open("GET","DB_srv?id=0&Login()&", true);
+	ca.send();
+	
+}
