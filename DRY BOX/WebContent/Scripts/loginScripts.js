@@ -17,6 +17,6 @@ function entrar()
 		
 	}
 	
-	ca.open("GET","DB_srv?id=0&usuario="+usuario+"&senha="+senha, true);
+	ca.open("GET","DB_srv?id=0&op=3"+"&usuario="+usuario+"&senha="+senha, true);
 	ca.send();
 }

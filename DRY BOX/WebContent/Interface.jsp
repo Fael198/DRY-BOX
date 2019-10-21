@@ -16,7 +16,7 @@
 
 	<img id='logo' src="imagens/logo.png" alt="LOGO">
 	
-	<button id="btnSair" onclick='sair()'>Sair</button>
+	<!-- <button id="btnSair" onclick='sair()'>Sair</button> -->
 <!-- 
 	<div>Cadastro de Usuário</div>
 	
@@ -73,6 +73,10 @@
   <!-- Aba de Estoque -->
   <li class="dropdown">
   	<a href="estoque.jsp" class="dropbtn">Estoque</a>
+  </li>
+  
+  <li class="dropdown">
+  	<a href="historico.jsp" class="dropbtn">Histórico de Movimentação</a>
   </li>
 </ul> 
 

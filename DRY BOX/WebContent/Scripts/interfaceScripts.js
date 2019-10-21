@@ -191,7 +191,7 @@ function abrirConBaixa(){
 }
 
 //SAIR DO SISTEMA
-function sair(){
+/*function sair(){
 	
 	var ca = new XMLHttpRequest();
 	ca.onreadystatechange = function()
@@ -207,4 +207,4 @@ function sair(){
 	ca.open("GET","DB_srv?id=0&Login()&", true);
 	ca.send();
 	
-}
+}*/

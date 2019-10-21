@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.HistoricoDAO;
 import dao.MaterialDAO;
 import dao.UsuarioDAO;
+import model.ModelHistorico;
 import model.ModelMaterial;
 import model.ModelUsuario;
 
@@ -40,14 +42,14 @@ public class DB_srv extends HttpServlet {
 		//INSTANCIANDO DAO'S
 		UsuarioDAO usrDao = new UsuarioDAO();
 		MaterialDAO mtrDao = new MaterialDAO();
+		HistoricoDAO hisDao = new HistoricoDAO();
 		
 		//INSTANCIANDO MODELS
 		ModelUsuario usr = new ModelUsuario();
 		ModelMaterial mtr = new ModelMaterial();
+		ModelHistorico his = new ModelHistorico();
 
 		int idu = 1;
-		String usuario = request.getParameter("usuario");
-		String senha = request.getParameter("senha");
 		
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
@@ -78,6 +80,13 @@ public class DB_srv extends HttpServlet {
 			//mtr.setDadoBaixaPor(idu);
 			//mtr.setRemovidoPor(idu);
 			
+			//Cadastrando no Histórico
+			his.setPart_number(pn);
+			his.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
+			his.setMovimentadoPor(idu);
+			his.setTipoMovimentacao("cadastro");
+			//////////////////////////
+			
 			mtrDao.BuscaMaterialDAO(mtr);	//FUNÇÃO QUE VERIFICA SE O MATERIAL ESTÁ NO BANCO
 			
 			if (mtrDao.BuscaMaterialDAO(mtr)){		//SE ESTE MATERIAL JÁ TIVER, APENAS ESCREVE '0'
@@ -85,13 +94,14 @@ public class DB_srv extends HttpServlet {
 			}else {									//SENÃO, ESCREVE '1'... 
 				out.println("1");
 				mtrDao.CadastraMaterialDAO(mtr);	//... E CADASTRA O MATERIAL NOVO
+				hisDao.CadastraMovimentacaoDAO(his);//... ADICIONA O CADASTRO NO HISTORICO
 			}
 		}
 		
 		else if(op == 3) //FAZER LOGIN
 		{
-			//String usuario = request.getParameter("usuario");
-			//String senha = request.getParameter("senha");
+			String usuario = request.getParameter("usuario");
+			String senha = request.getParameter("senha");
 
 			usr.setUsuario(usuario);
 			usr.setSenha(senha);
@@ -138,13 +148,21 @@ public class DB_srv extends HttpServlet {
 			mtr.setPart_number(request.getParameter("partnumber"));
 			mtr.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
 			
+			//Inserindo no Historico
+			his.setPart_number(request.getParameter("partnumber"));
+			his.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
+			his.setMovimentadoPor(idu);
+			his.setTipoMovimentacao("inserção");
+			////////////////////////
+			
 			mtrDao.BuscaMaterialDAO(mtr);
 			
-			if (mtrDao.BuscaMaterialDAO(mtr)){		
-				mtrDao.InserirMaterialDAO(mtr);
-				out.println("1");
+			if (mtrDao.BuscaMaterialDAO(mtr)){				//SE O MATERIAL EXISTIR...
+				mtrDao.InserirMaterialDAO(mtr);				//... INSERE A QUANTIDADE...
+				out.println("1");							//... E RETORNA '1'
+				hisDao.CadastraMovimentacaoDAO(his);		//ADICIONA INSERÇÃO NO HISTORICO
 			}else {									 
-				out.println("0");
+				out.println("0");							//...SENÃO RETORNA '0' INDICANDO QUE O MATERIAL SOLICITADO AINDA NÃO SE ENCONTRA CADASTRADO!
 			}
 			
 		}
@@ -168,10 +186,10 @@ public class DB_srv extends HttpServlet {
 		
 		if(op == 9) //SAIR DO SISTEMA
 		{
-			usr.setUsuario(usuario);
-			usr.setSenha(senha);
+			//usr.setUsuario(usuario);
+			//usr.setSenha(senha);
 			
-			usrDao.SairSistemaUsuarioDAO(usr);
+			//usrDao.SairSistemaUsuarioDAO(usr);
 		}
 		
 		
