@@ -6,6 +6,7 @@ public class ModelUsuario {
 	private String senha;
 	private String usuario;
 	private String email;
+	private EnumTipoUsuario tipo;
 	private boolean status;
 	private int criadoPor;
 	private String criadoEm;
@@ -45,6 +46,12 @@ public class ModelUsuario {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public EnumTipoUsuario getTipo() {
+		return tipo;
+	}
+	public void setTipo(EnumTipoUsuario tipo) {
+		this.tipo = tipo;
 	}
 	public boolean isStatus() {
 		return status;

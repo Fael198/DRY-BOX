@@ -40,6 +40,11 @@
   <li class="dropdown">
   	<a href="estoque.jsp" class="dropbtn">Estoque</a>
   </li>
+  
+  <!-- Aba de Historico -->
+  <li class="dropdown">
+  	<a href="historico.jsp" class="dropbtn">Histórico de Movimentação</a>
+  </li>
 </ul> 
 	</br></br>
 	

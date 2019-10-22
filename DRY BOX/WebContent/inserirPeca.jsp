@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+<jsp:useBean id="model" class="model.ModelUsuario" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,6 +44,11 @@
   <!-- Aba de Estoque -->
   <li class="dropdown">
   	<a href="estoque.jsp" class="dropbtn">Estoque</a>
+  </li>
+  
+  <!-- Aba de Historico -->
+  <li class="dropdown">
+  	<a href="historico.jsp" class="dropbtn">Histórico de Movimentação</a>
   </li>
 </ul> 
 </br></br>
