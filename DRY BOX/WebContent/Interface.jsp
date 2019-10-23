@@ -14,7 +14,7 @@
 <link rel="icon" href="imagens/icone-adv.ico" type="image/x-icon" />
 <title>Advantech - DRY BOX Controller</title>
 </head>
-<body>
+<body onload="exibeMenus()">
 
 	<img id='logo' src="imagens/logo.png" alt="LOGO">
 	
@@ -34,7 +34,7 @@
   
   <!-- Aba de Usuários -->
   <li class="dropdown">
-  	<a href="#" class="dropbtn">Usuários </a>
+  	<a href="#" class="dropbtn" >Usuários </a>
   	<div class="dropdown-content">
       <a href="cadastrarUsuario.jsp">Cadastro de novo usuário</a>
       <a href="removerUsuario.jsp">Remover Usuário</a>
@@ -48,7 +48,7 @@
   </li>
   
   <!-- Aba de Historico -->
-  <li class="dropdown">
+  <li class="dropdown" id="his">
   	<a href="historico.jsp" class="dropbtn">Histórico de Movimentação</a>
   </li>
 </ul> 

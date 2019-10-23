@@ -18,7 +18,6 @@
 	<td id="des"><h2>DESCRIÇÃO</h2></td>
 	-->
 
-
 	<c:forEach var="material" items="${listaMat}">
 
 		<tr>

@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
+
+import org.graalvm.compiler.nodes.java.ArrayLengthNode;
 
 import model.ModelMaterial;
 import model.ModelUsuario;
@@ -13,7 +16,7 @@ public class UsuarioDAO {
 	
 	private Conexao con;
 	
-	public UsuarioDAO() //CRIA A CONEXÃO COM O BANCO DE DADOS
+	public UsuarioDAO() //CRIA A CONEXï¿½O COM O BANCO DE DADOS
 	{
 		con = new Conexao();
 	}
@@ -23,22 +26,22 @@ public class UsuarioDAO {
 
 		try {
 			
-			//Verifica se usuario está cadastrado
-			PreparedStatement ca = conex.prepareStatement("SELECT id, usuario FROM usuario WHERE usuario=? and senha=?");
+			//Verifica se usuario estÃ¡ cadastrado
+			PreparedStatement ca = conex.prepareStatement("SELECT id, usuario FROM usuario WHERE usuario=? and senha=?");	//Comando SQL (SELECT)
 			ca.setString(1, usr.getUsuario());
 			ca.setString(2, usr.getSenha());
 			ca.execute();
 
 			// Executando o Query do BD
 			ResultSet c = ca.executeQuery();
-			int row = 0; // variável que vai contar as linhas (row) do BD
+			int row = 0;// variÃ¡vel que vai contar as linhas (row) do BD
 			while (c.next()) {
 				row++;
 			}
 
 			System.out.println(row);
 
-			// validação
+			// ValidaÃ§Ã£o
 			if (row == 1) {
 				return true;
 			} else {
@@ -46,7 +49,7 @@ public class UsuarioDAO {
 			}
 
 		} catch (Exception e) {
-			System.out.println("Erro na alteração." + e.getMessage());
+			System.out.println("Erro: UsuarioDAO (BuscaUsuarioDAO)" + e.getMessage());			//Mensagem de erro
 			return false;
 		}
 	}
@@ -55,18 +58,44 @@ public class UsuarioDAO {
 		Connection conex = con.conectar();
 		
 		try {
-			PreparedStatement ca = conex.prepareStatement("INSERT INTO usuario VALUES (0,?,?,?,?,0)");
+			PreparedStatement ca = conex.prepareStatement("INSERT INTO usuario VALUES (0,?,?,?,?,?,0)");	//Comando SQL (INSERT)
 
 			ca.setString(1, usr.getNome());
 			ca.setString(2, usr.getSenha());
 			ca.setString(3, usr.getUsuario());
 			ca.setString(4, usr.getEmail());
+			ca.setString(5, usr.getTipo());
 			ca.execute();
 			
 		} catch (Exception e) {
-			System.out.println("Deu ruim" + e.getMessage());
-
+			System.out.println("Erro: UsuarioDao(CadastraUsuarioDAO)" + e.getMessage());				//Mensagem de erro
 		}
+	}
+	
+	public List<ModelUsuario> BuscaTipoUsuario(String usuario, String senha, String tipo) {
+		Connection conex = con.conectar();
+		
+		try {
+		PreparedStatement ca = conex.prepareStatement("SELECT usuario.usuario, usuario.senha, usuario.tipo FROM usuario WHERE usuario = ? and senha = ? and tipo = ?");
+		
+		ResultSet res = ca.executeQuery();
+		ArrayList<ModelUsuario> listaUsu = new ArrayList<ModelUsuario>();
+		while (res.next()) {
+			ModelUsuario usu = new ModelUsuario();
+			usu.setNome(res.getString(usuario));
+			usu.setSenha(res.getString(senha));
+			usu.setTipo(res.getString(tipo));
+			listaUsu.add(usu);
+		}
+		
+		return listaUsu;
+		
+		
+		} catch (Exception e) {
+			System.out.println("" + e.getMessage());
+			return null;
+		}
+		
 	}
 	
 	public void RemoverUsuarioDAO(int id)
@@ -75,12 +104,12 @@ public class UsuarioDAO {
 		
 		try {
 			
-			PreparedStatement ca = conex.prepareStatement("DELETE FROM usuario WHERE id=?");
+			PreparedStatement ca = conex.prepareStatement("DELETE FROM usuario WHERE id=?");			//Comando SQL (DELETE)
 			ca.setInt(1, id);
 			ca.execute();
 			
 		} catch (Exception e) {
-			System.out.println("Erro na remoção." + e.getMessage());
+			System.out.println("Erro: UsuarioDAO(RemoverUsuarioDAO)" + e.getMessage());					//Mensagem de erro
 		}
 	}
 	

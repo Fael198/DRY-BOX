@@ -5,6 +5,7 @@ function cadastraUsuario()
 	var senha = document.getElementById("senha").value;
 	var usuario = document.getElementById("usuario").value;
 	var email = document.getElementById("email").value;
+	var tipo = document.getElementById("tipo").value;
 	
 	var ca = new XMLHttpRequest();
 	ca.onreadystatechange = function() {
@@ -12,7 +13,7 @@ function cadastraUsuario()
 			alert("Usuario Cadastrado com Sucesso!");
 	}
 
-	ca.open("GET", "DB_srv?id=0&op=1"+"&nome="+nome+"&senha="+senha+"&usuario="+usuario+"&email="+email, true);
+	ca.open("GET", "DB_srv?id=0&op=1"+"&nome="+nome+"&senha="+senha+"&usuario="+usuario+"&email="+email+"&tipo="+tipo, true);
 	ca.send();
 }
 
@@ -208,3 +209,7 @@ function abrirConBaixa(){
 	ca.send();
 	
 }*/
+
+function exibeMenus() {
+	
+}

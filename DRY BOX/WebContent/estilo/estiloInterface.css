@@ -247,3 +247,7 @@ input {
 	width: 3%;
 	border: 0;
 }
+
+#his{
+	display: none;
+}

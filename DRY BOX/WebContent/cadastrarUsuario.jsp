@@ -72,6 +72,15 @@
 	            <td><label for="email">Email: </label></td>
 	            <td><input type="text" name="email" id="email" size="25" required><td>
 	        </tr>
+	        <tr>
+	        	<td>
+		        <select id="tipo">
+				    <option value="" ></option>
+				    <option value="Administrador" >Administrador</option>
+				    <option value="Comum" >Comum</option>
+				</select>
+				</td>
+			</tr>
 	    </table>
 	</form>
 	

@@ -54,12 +54,13 @@ public class DB_srv extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		
-		if (op == 1) //CADASTRO DE USU¡RIO
+		if (op == 1) //CADASTRO DE USUÔøΩRIO
 		{
 			usr.setNome(request.getParameter("nome"));
 			usr.setSenha(request.getParameter("senha"));
 			usr.setUsuario(request.getParameter("usuario"));
 			usr.setEmail(request.getParameter("email"));
+			usr.setTipo(request.getParameter("tipo"));
 			usrDao.CadastraUsuarioDAO(usr);
 		}
 		
@@ -80,18 +81,18 @@ public class DB_srv extends HttpServlet {
 			//mtr.setDadoBaixaPor(idu);
 			//mtr.setRemovidoPor(idu);
 			
-			//Cadastrando no HistÛrico
+			//Cadastrando no HistÔøΩrico
 			his.setPart_number(pn);
 			his.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
 			his.setMovimentadoPor(idu);
 			his.setTipoMovimentacao("cadastro");
 			//////////////////////////
 			
-			mtrDao.BuscaMaterialDAO(mtr);	//FUN«√O QUE VERIFICA SE O MATERIAL EST¡ NO BANCO
+			mtrDao.BuscaMaterialDAO(mtr);	//FUNÔøΩÔøΩO QUE VERIFICA SE O MATERIAL EST√Å NO BANCO
 			
-			if (mtrDao.BuscaMaterialDAO(mtr)){		//SE ESTE MATERIAL J¡ TIVER, APENAS ESCREVE '0'
+			if (mtrDao.BuscaMaterialDAO(mtr)){		//SE ESTE MATERIAL J√Å TIVER, APENAS ESCREVE '0'
 				out.println("0");
-			}else {									//SEN√O, ESCREVE '1'... 
+			}else {									//SEN√ÉO, ESCREVE '1'... 
 				out.println("1");
 				mtrDao.CadastraMaterialDAO(mtr);	//... E CADASTRA O MATERIAL NOVO
 				hisDao.CadastraMovimentacaoDAO(his);//... ADICIONA O CADASTRO NO HISTORICO
@@ -119,7 +120,7 @@ public class DB_srv extends HttpServlet {
 			}
 		}
 		
-		else if(op == 4) //REMOVER USU¡RIO
+		else if(op == 4) //REMOVER USUÔøΩRIO
 		{
 			usrDao.RemoverUsuarioDAO(id);
 		}
@@ -152,7 +153,7 @@ public class DB_srv extends HttpServlet {
 			his.setPart_number(request.getParameter("partnumber"));
 			his.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
 			his.setMovimentadoPor(idu);
-			his.setTipoMovimentacao("inserÁ„o");
+			his.setTipoMovimentacao("inserÔøΩÔøΩo");
 			////////////////////////
 			
 			mtrDao.BuscaMaterialDAO(mtr);
@@ -160,9 +161,9 @@ public class DB_srv extends HttpServlet {
 			if (mtrDao.BuscaMaterialDAO(mtr)){				//SE O MATERIAL EXISTIR...
 				mtrDao.InserirMaterialDAO(mtr);				//... INSERE A QUANTIDADE...
 				out.println("1");							//... E RETORNA '1'
-				hisDao.CadastraMovimentacaoDAO(his);		//ADICIONA INSER«√O NO HISTORICO
+				hisDao.CadastraMovimentacaoDAO(his);		//ADICIONA INSERÔøΩÔøΩO NO HISTORICO
 			}else {									 
-				out.println("0");							//...SEN√O RETORNA '0' INDICANDO QUE O MATERIAL SOLICITADO AINDA N√O SE ENCONTRA CADASTRADO!
+				out.println("0");							//...SENÔøΩO RETORNA '0' INDICANDO QUE O MATERIAL SOLICITADO AINDA NÔøΩO SE ENCONTRA CADASTRADO!
 			}
 			
 		}
