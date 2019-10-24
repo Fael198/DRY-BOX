@@ -54,7 +54,7 @@ public class DB_srv extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		
-		if (op == 1) //CADASTRO DE USU�RIO
+		if (op == 1) //CADASTRO DE USUï¿½RIO
 		{
 			usr.setNome(request.getParameter("nome"));
 			usr.setSenha(request.getParameter("senha"));
@@ -81,18 +81,18 @@ public class DB_srv extends HttpServlet {
 			//mtr.setDadoBaixaPor(idu);
 			//mtr.setRemovidoPor(idu);
 			
-			//Cadastrando no Hist�rico
+			//Cadastrando no Histï¿½rico
 			his.setPart_number(pn);
 			his.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
 			his.setMovimentadoPor(idu);
-			his.setTipoMovimentacao("cadastro");
+			his.setTipoMovimentacao("cadastrado");
 			//////////////////////////
 			
-			mtrDao.BuscaMaterialDAO(mtr);	//FUN��O QUE VERIFICA SE O MATERIAL ESTÁ NO BANCO
+			mtrDao.BuscaMaterialDAO(mtr);	//FUNï¿½ï¿½O QUE VERIFICA SE O MATERIAL ESTÃ� NO BANCO
 			
-			if (mtrDao.BuscaMaterialDAO(mtr)){		//SE ESTE MATERIAL JÁ TIVER, APENAS ESCREVE '0'
+			if (mtrDao.BuscaMaterialDAO(mtr)){		//SE ESTE MATERIAL JÃ� TIVER, APENAS ESCREVE '0'
 				out.println("0");
-			}else {									//SENÃO, ESCREVE '1'... 
+			}else {									//SENÃƒO, ESCREVE '1'... 
 				out.println("1");
 				mtrDao.CadastraMaterialDAO(mtr);	//... E CADASTRA O MATERIAL NOVO
 				hisDao.CadastraMovimentacaoDAO(his);//... ADICIONA O CADASTRO NO HISTORICO
@@ -120,7 +120,7 @@ public class DB_srv extends HttpServlet {
 			}
 		}
 		
-		else if(op == 4) //REMOVER USU�RIO
+		else if(op == 4) //REMOVER USUï¿½RIO
 		{
 			usrDao.RemoverUsuarioDAO(id);
 		}
@@ -144,8 +144,6 @@ public class DB_srv extends HttpServlet {
 		
 		if(op == 7) //INSERIR MATERIAL
 		{
-			String pn = request.getParameter("partnumber");
-			
 			mtr.setPart_number(request.getParameter("partnumber"));
 			mtr.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
 			
@@ -153,7 +151,7 @@ public class DB_srv extends HttpServlet {
 			his.setPart_number(request.getParameter("partnumber"));
 			his.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
 			his.setMovimentadoPor(idu);
-			his.setTipoMovimentacao("inserção");
+			his.setTipoMovimentacao("inserido");
 			////////////////////////
 			
 			mtrDao.BuscaMaterialDAO(mtr);
@@ -161,17 +159,15 @@ public class DB_srv extends HttpServlet {
 			if (mtrDao.BuscaMaterialDAO(mtr)){				//SE O MATERIAL EXISTIR...
 				mtrDao.InserirMaterialDAO(mtr);				//... INSERE A QUANTIDADE...
 				out.println("1");							//... E RETORNA '1'
-				hisDao.CadastraMovimentacaoDAO(his);		//ADICIONA INSER��O NO HISTORICO
+				hisDao.CadastraMovimentacaoDAO(his);		//ADICIONA INSERï¿½ï¿½O NO HISTORICO
 			}else {									 
-				out.println("0");							//...SEN�O RETORNA '0' INDICANDO QUE O MATERIAL SOLICITADO AINDA N�O SE ENCONTRA CADASTRADO!
+				out.println("0");							//...SENï¿½O RETORNA '0' INDICANDO QUE O MATERIAL SOLICITADO AINDA Nï¿½O SE ENCONTRA CADASTRADO!
 			}
 			
 		}
 		
 		if(op == 8) //RETIRAR MATERIAL
-		{
-			String pn = request.getParameter("partnumber");
-			
+		{			
 			mtr.setPart_number(request.getParameter("partnumber"));
 			mtr.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
 	
@@ -179,7 +175,7 @@ public class DB_srv extends HttpServlet {
 			his.setPart_number(request.getParameter("partnumber"));
 			his.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
 			his.setMovimentadoPor(idu);
-			his.setTipoMovimentacao("remoção");
+			his.setTipoMovimentacao("retirado (baixa)");
 			////////////////////////
 			
 			mtrDao.BuscaMaterialDAO(mtr);
@@ -202,6 +198,17 @@ public class DB_srv extends HttpServlet {
 
 			listaHis = request.getRequestDispatcher("listaHistorico.jsp");
 			listaHis.forward(request, response);
+		}
+		
+		if(op == 10) //LISTAR USUARIO
+		{
+			ArrayList<ModelUsuario> listaUsuario = usrDao.listaUsuarioDAO();
+
+			request.setAttribute("listaUsr", listaUsuario);
+			RequestDispatcher listaUsr;
+
+			listaUsr = request.getRequestDispatcher("listaUsuario.jsp");
+			listaUsr.forward(request, response);
 		}
 		
 		

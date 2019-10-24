@@ -290,3 +290,57 @@ input {
 #saidaHis h2 {
 	font-size: 18px;
 }
+
+#saidaUsr {
+	margin-left: 2%;
+	margin-top: 5%;
+	width: 1000px;
+	text-align: center;
+	
+	font-weight: bold;
+	font-variant: small-caps;
+}
+
+#saidaUsr td {
+	border: 1px solid #ddd;
+	text-align: center;
+	font-size: 15px;
+	padding: 8px 12px 8px 12px;
+}
+
+#saidaUsr #topo {
+	background-color: #006699;
+	color: white;
+}
+
+#saidaUsr tr {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #0080ff;
+	color: white;
+}
+
+#saidaUsr h2 {
+	font-size: 18px;
+}
+
+#saidaUsr #remUsr {
+	cursor: pointer;
+}
+
+#popupUsr {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 320px;
+	height: 140px;
+	padding: 20px;
+	border: solid 1px blue;
+	background: white;
+	text-align: center;
+	display: none;
+}

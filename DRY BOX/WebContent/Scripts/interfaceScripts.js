@@ -7,13 +7,32 @@ function cadastraUsuario()
 	var email = document.getElementById("email").value;
 	var tipo = document.getElementById("tipo").value;
 	
+	if(nome == "" || senha == "" || usuario == "" || email == "" || tipo == ""){
+		alert("Preencha os dados obrigatorios!");
+	} else{
+		var ca = new XMLHttpRequest();
+		ca.onreadystatechange = function() {
+			if (ca.readyState == 4)
+				alert("Usuario Cadastrado com Sucesso!");
+		}
+
+		ca.open("GET", "DB_srv?id=0&op=1"+"&nome="+nome+"&senha="+senha+"&usuario="+usuario+"&email="+email+"&tipo="+tipo, true);
+		ca.send();
+	}
+	
+}
+
+//REMOVER USUARIO
+function removerUsr(id) {
 	var ca = new XMLHttpRequest();
+	alert("DB_srv?op=4&id="+id);
+
 	ca.onreadystatechange = function() {
 		if (ca.readyState == 4)
-			alert("Usuario Cadastrado com Sucesso!");
+			listaUsr();
 	}
 
-	ca.open("GET", "DB_srv?id=0&op=1"+"&nome="+nome+"&senha="+senha+"&usuario="+usuario+"&email="+email+"&tipo="+tipo, true);
+	ca.open("GET", "DB_srv?op=4&id="+id, true);
 	ca.send();
 }
 
@@ -75,6 +94,20 @@ function listaHis() {
 	}
 
 	ca.open("GET", "DB_srv?id=0&op=9", true);
+	ca.send();
+
+}
+
+//LISTAR USUARIO
+function listaUsr() {
+
+	var ca = new XMLHttpRequest();
+	ca.onreadystatechange = function() {
+		if (ca.readyState == 4)
+			document.getElementById("saidaUsr").innerHTML = ca.responseText;
+	}
+
+	ca.open("GET", "DB_srv?id=0&op=10", true);
 	ca.send();
 
 }
@@ -226,4 +259,16 @@ function abrirConBaixa(){
 
 function exibeMenus() {
 	
+}
+
+function abrirPopup() {
+	if (document.getElementById("popupUsr").style.display == 'block') {
+		document.getElementById("popupUsr").style.display = 'none';
+		//document.getElementById("popupUsrContent").style.display = 'none';
+	}
+
+	else {
+		document.getElementById("popupUsr").style.display = 'block';
+		//document.getElementById("popupUsrContent").style.display = 'block';
+	}
 }

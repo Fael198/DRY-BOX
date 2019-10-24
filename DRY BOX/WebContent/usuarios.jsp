@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<jsp:useBean id="model" class="model.ModelUsuario" />
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +7,9 @@
 <script type="text/javascript" src="Scripts/interfaceScripts.js"></script>
 <link rel="stylesheet" href="estilo/estiloInterface.css">
 <!-- <link rel="icon" href="imagens/icone-adv.ico" type="image/x-icon" /> -->
-<title>Inserir Material</title>
+<title>Usuários Cadastrados</title>
 </head>
-<body>
+<body onload='listaUsr()'>
 
 	<!-- <img id='logo' src="imagens/logo.png" alt="LOGO"> -->
 
@@ -34,7 +29,7 @@
 			<div class="dropdown-content">
 				<a href="cadastrarUsuario.jsp">Cadastrar</a> 
 				<a href="removerUsuario.jsp">Remover</a> 
-				<a href="usuarios.jsp">Exibir Usuários Cadastrados</a>
+				<a href="listarUsuarios.jsp">Exibir Usuários Cadastrados</a>
 			</div></li>
 
 		<!-- Aba de Estoque -->
@@ -49,35 +44,8 @@
 	</ul>
 	<br />
 	<br />
-	<div id='bordaConteudo'>
-		<div id='titulo'>Inserir Material</div>
 
-		<form action="DB_srv" method="post">
-			<table id="tabelaInsMaterial" cellspacing="20" cellpadding="1">
-				<tr>
-					<td><label for="partnumberI"></label></td>
-					<td><input type="text" name="partnumberI" id="partnumberI"
-						placeholder="Part Number..." required></td>
-				</tr>
-				<tr>
-					<td><label for="quantidadeI"></label></td>
-					<td><input type="number" name="quantidadeI" id="quantidadeI"
-						placeholder="Quantidade..." step="1" required></td>
-				</tr>
-			</table>
-		</form>
+	<div id='saidaUsr'></div>
 
-		<button onclick='abrirConInserir()' id="inserirMat" type="submit">INSERIR</button>
-	</div>
-
-	<div id="popupContent">
-		<div id="popup">
-			<br /> Você deseja INSERIR na quantidade do material no estoque?<br />
-			<br /> <br />
-			<button onclick="inserirMat()">CONFIRMAR</button>
-			<button onclick="abrirConInserir()">CANCELAR</button>
-
-		</div>
-	</div>
 </body>
 </html>

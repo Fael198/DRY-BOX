@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.graalvm.compiler.nodes.java.ArrayLengthNode;
-
-import model.ModelMaterial;
+import model.ModelHistorico;
 import model.ModelUsuario;
 import util.Conexao;
 
@@ -142,6 +140,31 @@ public class UsuarioDAO {
 		} catch (Exception e) {
 			System.out.println("Deu ruim" + e.getMessage());
 
+		}
+	}
+	
+	public ArrayList<ModelUsuario> listaUsuarioDAO() {
+		Connection conex = con.conectar();
+
+		try {
+			PreparedStatement ca = conex.prepareStatement("SELECT * FROM usuario");		
+			ResultSet res = ca.executeQuery();																						
+			ArrayList<ModelUsuario> listaUsr = new ArrayList<ModelUsuario>();
+			while (res.next()) {
+				ModelUsuario usr = new ModelUsuario();
+				usr.setNome(res.getString("nome"));
+				usr.setSenha(res.getString("senha"));
+				usr.setUsuario(res.getString("usuario"));
+				usr.setEmail(res.getString("email"));
+				usr.setTipo(res.getString("tipo"));
+				
+				listaUsr.add(usr);
+			}
+
+			return listaUsr;
+		} catch (Exception e) {
+			System.out.println("Erro: UsuarioDAO (listaUsuarioDAO). " + e.getMessage());
+			return null;
 		}
 	}
 }

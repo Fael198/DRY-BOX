@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import model.ModelHistorico;
-import model.ModelMaterial;
 import util.Conexao;
 
 public class HistoricoDAO {
