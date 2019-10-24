@@ -153,7 +153,7 @@ public class DB_srv extends HttpServlet {
 			his.setPart_number(request.getParameter("partnumber"));
 			his.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
 			his.setMovimentadoPor(idu);
-			his.setTipoMovimentacao("inser��o");
+			his.setTipoMovimentacao("inserção");
 			////////////////////////
 			
 			mtrDao.BuscaMaterialDAO(mtr);
@@ -175,22 +175,33 @@ public class DB_srv extends HttpServlet {
 			mtr.setPart_number(request.getParameter("partnumber"));
 			mtr.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
 	
+			//Inserindo no Historico
+			his.setPart_number(request.getParameter("partnumber"));
+			his.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
+			his.setMovimentadoPor(idu);
+			his.setTipoMovimentacao("remoção");
+			////////////////////////
+			
 			mtrDao.BuscaMaterialDAO(mtr);
 			
 			if (mtrDao.BuscaMaterialDAO(mtr)){		
 				mtrDao.RetirarMaterialDAO(mtr);
 				out.println("1");
+				hisDao.CadastraMovimentacaoDAO(his);
 			}else {									 
 				out.println("0");
 			}
 		}
 		
-		if(op == 9) //SAIR DO SISTEMA
+		if(op == 9) //LISTAR HISTORICO
 		{
-			//usr.setUsuario(usuario);
-			//usr.setSenha(senha);
-			
-			//usrDao.SairSistemaUsuarioDAO(usr);
+			ArrayList<ModelHistorico> listaHistorico = hisDao.listaHistoricoDAO();
+
+			request.setAttribute("listaHis", listaHistorico);
+			RequestDispatcher listaHis;
+
+			listaHis = request.getRequestDispatcher("listaHistorico.jsp");
+			listaHis.forward(request, response);
 		}
 		
 		

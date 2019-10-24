@@ -65,6 +65,20 @@ function listaMat() {
 
 }
 
+//LISTAR HISTORICO
+function listaHis() {
+
+	var ca = new XMLHttpRequest();
+	ca.onreadystatechange = function() {
+		if (ca.readyState == 4)
+			document.getElementById("saidaHis").innerHTML = ca.responseText;
+	}
+
+	ca.open("GET", "DB_srv?id=0&op=9", true);
+	ca.send();
+
+}
+
 //REMOVER MATERIAL
 function removerMat(id) {
 	var ca = new XMLHttpRequest();

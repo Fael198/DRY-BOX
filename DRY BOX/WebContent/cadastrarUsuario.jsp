@@ -57,24 +57,20 @@
 		<form action="" method="post">
 	    <table id="tabela" cellspacing="20" cellpadding="1">
 	        <tr>
-	            <td><label for="nome">Nome: </label></td>
-	            <td><input type="text" name="nome" id="nome" size="25" required><td>
+	            <td><input type="text" name="nome" id="nome" size="30" placeholder="Nome..." required><td>
 	        </tr>
 	        <tr>
-	            <td><label for="senha">Senha: </label></td>
-	            <td><input type="password" name="senha" id="senha" size="25" required><td>
+	            <td><input type="password" name="senha" id="senha" size="30" placeholder="Senha..." required><td>
 	        </tr>
 	        <tr>
-	            <td><label for="usuario">Usuario: </label></td>
-	            <td><input type="text" name="usuario" id="usuario" size="25" required><td>
+	            <td><input type="text" name="usuario" id="usuario" size="30" placeholder="Usuario..." required><td>
 	        </tr>
 	        <tr>
-	            <td><label for="email">Email: </label></td>
-	            <td><input type="text" name="email" id="email" size="25" required><td>
+	            <td><input type="text" name="email" id="email" size="30"  placeholder="Email..." required><td>
 	        </tr>
 	        <tr>
-	        	<td>
-		        <select id="tipo">
+	        	<td>Tipo de Usuário:
+		        <select id="tipo">  
 				    <option value="" ></option>
 				    <option value="Administrador" >Administrador</option>
 				    <option value="Comum" >Comum</option>

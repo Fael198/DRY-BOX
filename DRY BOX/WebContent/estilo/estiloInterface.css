@@ -13,7 +13,7 @@ body {
 
 table {
 	border-collapse: separate;
-	border-spacing: 1px 30px;
+	border-spacing: 2px 20px;
 }
 
 #saida {
@@ -50,6 +50,11 @@ table {
 
 #saida #selecionarMat {
 	cursor: pointer;
+}
+
+#saida #topo {
+	background-color: #006699;
+	color: white;
 }
 
 #saida tr {
@@ -250,4 +255,38 @@ input {
 
 #his{
 	display: none;
+}
+
+#saidaHis {
+	margin-left: 2%;
+	margin-top: 5%;
+	width: 1000px;
+	text-align: center;
+	
+	font-weight: bold;
+	font-variant: small-caps;
+}
+
+#saidaHis td {
+	border: 1px solid #ddd;
+	text-align: center;
+	font-size: 15px;
+	padding: 8px 12px 8px 12px;
+}
+
+#saidaHis #topo {
+	background-color: #006699;
+	color: white;
+}
+
+#saidaHis tr {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #0080ff;
+	color: white;
+}
+
+#saidaHis h2 {
+	font-size: 18px;
 }
