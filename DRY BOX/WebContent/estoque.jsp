@@ -42,8 +42,6 @@
 			<a href="historico.jsp" class="dropbtn">Histórico de Movimentação</a>
 		</li>
 	</ul>
-	<br />
-	<br />
 
 	<div id='saida'></div>
 

@@ -1,17 +1,17 @@
 @CHARSET "ISO-8859-1";
 
 body{
-	background: url(../imagens/background.jpg);
+	/*background: url(../imagens/background.jpg);*/
+	background-image: linear-gradient(90deg, white, #9b9bff);
 	background-size: 100%;
 }
 
-div{
-	margin-top: 8%;
-	margin-left: 12%;
-	font-size: 60px;
+#titulo {
+	margin-top: 2%;
+	margin-left: 2%;
+	font-size: 45px;
 	color: #002db3;
 	font-family: "forte";
-	
 }
 
 #logo {
@@ -25,12 +25,12 @@ div{
 }
 
 td{
-	font-size: 20px;
+	font-size: 18px;
 	color: #002db3;
 }
 form{
-	margin-top: 2%;
-	margin-left: 10%;
+	margin-top: 4%;
+	margin-left: 18%;
 }
 input{
 	border: 1px solid #002db3;
@@ -56,11 +56,59 @@ button {
 	height: 45px;
 	cursor: pointer;
 	margin-top: 3%;
-	margin-left: 16%
+	margin-left: 2%
 }
 
 button:hover {
 	background-color: white; /* Green */
   	color: #002db3;
   	border-left: 8px solid #002db3;
+}
+
+#popupContent, #popupContentErro {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.6);
+	display: none;
+}
+
+#popupLogado, #popupErro {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 320px;
+	height: 140px;
+	padding: 20px;
+	border: solid 1px blue;
+	background: white;
+	text-align: center;
+	display: none;
+}
+
+#btnLogin {
+	margin-left: 0;
+}
+
+#bordaConteudo {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	border: 1px solid #002db3;
+	background-color: #ffffff;
+	opacity: 0.8;
+	border-radius: 4px;
+	padding: 15px;
+	width: 500px;
+	height: 300px;
+	text-align: center;
 }
