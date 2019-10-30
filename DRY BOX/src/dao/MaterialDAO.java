@@ -42,7 +42,7 @@ public class MaterialDAO {
 			}
 
 		} catch (Exception e) {
-			System.out.println("Erro na busca." + e.getMessage());
+			System.out.println("Erro: MatereialDAO (BuscaMaterialDAO)." + e.getMessage());
 			return false;
 		}
 	}
@@ -64,7 +64,7 @@ public class MaterialDAO {
 			ca.execute();
 			
 		} catch (Exception e) {
-			System.out.println("Deu ruim" + e.getMessage());
+			System.out.println("Erro: MaterialDAO (CadastraMaterialDAO)" + e.getMessage());
 
 		}
 	}
@@ -90,21 +90,21 @@ public class MaterialDAO {
 
 			return listaMat;
 		} catch (Exception e) {
-			System.out.println("Erro na lista. " + e.getMessage());
+			System.out.println("Erro: MaterialDAO (ListarMaterialDAO). " + e.getMessage());
 			return null;
 		}
 	}
 	
-	public void RemoverMaterialDAO(int id) {
+	public void RemoverMaterialDAO(ModelMaterial mtr) {
 
 		Connection conex = con.conectar();
 
 		try {
-			PreparedStatement ca = conex.prepareStatement("DELETE FROM material WHERE id=?");
-			ca.setInt(1, id);
+			PreparedStatement ca = conex.prepareStatement("DELETE FROM material WHERE partnumber=?");
+			ca.setString(1, mtr.getPart_number());
 			ca.execute();
 		} catch (Exception e) {
-			System.out.println("Erro na remoção." + e.getMessage());
+			System.out.println("Erro: MaterialDAO (RemoverMaterialDAO)" + e.getMessage());
 		}
 	}
 	
@@ -118,7 +118,7 @@ public class MaterialDAO {
 			ca.setString(2, mtr.getPart_number());
 			ca.execute();
 		} catch (Exception e) {
-			System.out.println("Erro na alteração." + e.getMessage());
+			System.out.println("Erro: MaterialDAO (InserirMaterialDAO)" + e.getMessage());
 		}
 	}
 	
@@ -132,7 +132,7 @@ public class MaterialDAO {
 			ca.setString(2, mtr.getPart_number());
 			ca.execute();
 		} catch (Exception e) {
-			System.out.println("Erro na alteração." + e.getMessage());
+			System.out.println("Erro: MaterialDAO ( RetirarMaterialDAO)" + e.getMessage());
 		}
 	}
 }

@@ -127,7 +127,25 @@ public class DB_srv extends HttpServlet {
 		
 		else if(op == 5) //REMOVER MATERIAL
 		{
-			mtrDao.RemoverMaterialDAO(id);
+			mtr.setPart_number(request.getParameter("partnumber"));
+			
+			mtrDao.BuscaMaterialDAO(mtr);
+			
+			//Inserindo no Historico
+			his.setPart_number(request.getParameter("partnumber"));
+			his.setMovimentadoPor(idu);
+			his.setTipoMovimentacao("removido");
+			////////////////////////
+			
+			if (mtrDao.BuscaMaterialDAO(mtr)){				//SE O MATERIAL EXISTIR...
+				mtrDao.RemoverMaterialDAO(mtr);				//... REMOVE O MATERIAL...
+				out.println("1");							//... E RETORNA '1'
+				hisDao.CadastraMovimentacaoDAO(his);		//ADICIONA REMOÇÃO NO HISTORICO
+			}else {									 
+				out.println("0");							//...SENï¿½O RETORNA '0' INDICANDO QUE O MATERIAL SOLICITADO AINDA Nï¿½O SE ENCONTRA CADASTRADO!
+			}
+			
+			
 		}
 		
 		if (op == 6) //LISTA DE MATERIAL

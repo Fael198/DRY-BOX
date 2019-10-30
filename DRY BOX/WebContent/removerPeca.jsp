@@ -7,7 +7,7 @@
 <script type="text/javascript" src="Scripts/interfaceScripts.js"></script>
 <link rel="stylesheet" href="estilo/estiloInterface.css">
 <!-- <link rel="icon" href="imagens/icone-adv.ico" type="image/x-icon" /> -->
-<title>Remover Usuário</title>
+<title>Remover Material</title>
 </head>
 <body>
 
@@ -46,27 +46,27 @@
 	<br />
 	<br />
 	<div id='bordaConteudo'>
-		<div id='titulo'>Remover Usuário</div>
+		<div id='titulo'>Remover Material</div>
 
 		<form action="DB_srv" method="post">
 			<table id="tabelaRetMaterial" cellspacing="20" cellpadding="1">
 				<tr>
-					<td><label for="nomeUsuario"></label></td>
-					<td><input type="text" name="nomeUsuario" id="nomeUsuario"
-						placeholder="Nome de Usuário..." required></td>
+					<td><label for="partnumberR"></label></td>
+					<td><input type="text" name="partnumberR" id="partnumberR"
+						placeholder="Part Number..." required></td>
 				</tr>
 			</table>
 		</form>
 
-		<button onclick='abrirConRemoverU()' id="removerUsu" type="submit">REMOVER</button>
+		<button onclick='abrirConRemover()' id="removerMat" type="submit">REMOVER</button>
 	</div>
 
 	<div id="popupContent">
 		<div id="popup">
-			<br /> Você deseja REMOVER o usuario do sistema?<br />
+			<br /> Você deseja REMOVER o material do estoque?<br />
 			<br /> <br />
-			<button onclick="removerUsu()">CONFIRMAR</button>
-			<button onclick="abrirConRemoverU()">CANCELAR</button>
+			<button onclick="removerMat()">CONFIRMAR</button>
+			<button onclick="abrirConRemover()">CANCELAR</button>
 		</div>
 	</div>
 

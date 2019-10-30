@@ -31,7 +31,7 @@ private Conexao con;
 			ca.execute();
 			
 		} catch (Exception e) {
-			System.out.println("Erro: HistoricoDAO" + e.getMessage());
+			System.out.println("Erro: HistoricoDAO (CadastraMovimentacaoDAO)" + e.getMessage());
 
 		}
 	}

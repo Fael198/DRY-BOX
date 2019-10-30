@@ -9,7 +9,6 @@
 <table>
 	<tr id="topo">
 		<td><h2>Nome</h2></td>
-		<td><h2>Senha</h2></td>
 		<td><h2>Usuario</h2></td>
 		<td><h2>Email</h2></td>
 		<td><h2>Tipo de Usuário</h2></td>
@@ -19,11 +18,10 @@
 	
 		<tr>
 			<td><c:out value="${usuario.nome}" /></td>
-			<td><c:out value="${usuario.senha}" /></td>
 			<td><c:out value="${usuario.usuario}" /></td>
 			<td><c:out value="${usuario.email}" /></td>
 			<td><c:out value="${usuario.tipo}" /></td>
-			<td id="remUsr" onclick="abrirPopup()">Remover</td>
+			<!-- <td id="remUsr" onclick="abrirPopup()">Remover</td> -->
 		</tr>
 		
 		<div id='popupUsr'>

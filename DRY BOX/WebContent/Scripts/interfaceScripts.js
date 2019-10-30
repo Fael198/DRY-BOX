@@ -113,15 +113,21 @@ function listaUsr() {
 }
 
 //REMOVER MATERIAL
-function removerMat(id) {
+function removerMat() {
+	var partnumber = document.getElementById("partnumberR").value;
+	
 	var ca = new XMLHttpRequest();
-
 	ca.onreadystatechange = function() {
-		if (ca.readyState == 4)
-			listaMat();
+		if (ca.readyState == 4){
+			if(ca.responseText == 1){
+				alert("Material Removido!");
+				window.location.href = "estoque.jsp";
+			} else {
+				alert("Part Number nao cadastrado!");
+			}
+		}
 	}
-
-	ca.open("GET", "DB_srv?op=5&id="+id, true);
+	ca.open("GET", "DB_srv?id=0&op=5&partnumber="+partnumber, true);
 	ca.send();
 }
 
@@ -222,6 +228,28 @@ function abrirConBaixa(){
 	var quantidade = document.getElementById("quantidadeR").value;
 	
 	if(partnumber == '' || quantidade == ''){
+		
+		alert("Preencha os campos obrigatorios!");
+	}else {
+	
+		if (document.getElementById("popup").style.display == 'block') {
+			document.getElementById("popup").style.display = 'none';
+			document.getElementById("popupContent").style.display = 'none';
+		}
+	
+		else {
+			document.getElementById("popup").style.display = 'block';
+			document.getElementById("popupContent").style.display = 'block';
+		}
+	}
+}
+
+//POPUP DE CONFIRMAÇÃO DE REMOVER
+function abrirConRemover(){
+	
+	var partnumber = document.getElementById("partnumberR").value;
+	
+	if(partnumber == ''){
 		
 		alert("Preencha os campos obrigatorios!");
 	}else {
