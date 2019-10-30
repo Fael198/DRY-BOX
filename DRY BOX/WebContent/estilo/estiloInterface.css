@@ -85,11 +85,15 @@ button:hover {
 }
 
 ul {
+	position: fixed;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
 	background-color: #002db3;
+	width: 100%;
+	top: 0;
+	left: 0;
 }
 
 li {
