@@ -40,7 +40,7 @@
 		<div id="popupLogado"></br >
 			Login efetuado com sucesso!</br ></br >
 			</br >
-			<button id="btnLogin" onclick="abrirInterface()"> Let's Go!</button>		
+			<button id="btnLogin" onclick="verificarAcesso()"> Let's Go!</button>		
 		</div>
 	</div>
 	

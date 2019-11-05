@@ -108,7 +108,7 @@ public class DB_srv extends HttpServlet {
 			usr.setSenha(senha);
 
 			usrDao.BuscarUsuarioDAO(usr);
-			usrDao.MudaStatusUsuarioDAO(usr);
+			//usrDao.MudaStatusUsuarioDAO(usr);
 
 			
 			boolean vazio = usrDao.BuscarUsuarioDAO(usr);
@@ -229,28 +229,34 @@ public class DB_srv extends HttpServlet {
 			listaUsr.forward(request, response);
 		}
 		
-		
+		if(op == 11)
+		{
+			String usuario = request.getParameter("usuario");
+			
+			usr.setUsuario(usuario);
+			
+			//usrDao.BuscarTipoDAO(usr);
+			
+			String tipo = usrDao.BuscarTipoDAO(usr);
+			System.out.println("Aqui: "+tipo);
+
+			if (tipo == "Comum") {
+				System.out.println("1");
+				out.println("1");
+			} else if(tipo == "Administrador"){
+				System.out.println("0");
+				out.println("0");
+			} else {
+				System.out.println("Erro!");
+				out.print("Erro!");
+			}
+			
+		}
 		
 	}
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	//DOPOST
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

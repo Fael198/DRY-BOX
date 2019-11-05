@@ -52,6 +52,35 @@ public class UsuarioDAO {
 		}
 	}
 	
+	public String BuscarTipoDAO(ModelUsuario usr) {
+		Connection conex = con.conectar();
+		
+		try {
+			PreparedStatement ca = conex.prepareStatement("SELECT usuario.tipo FROM usuario WHERE usuario = ?");
+			ca.setString(1, usr.getUsuario());
+			
+			ResultSet res = ca.executeQuery(); // parei aqui
+			res.next();
+			
+			String teste = "Comum";
+			String teste2 = "Administrador";
+			String tipo = res.getString("tipo");
+			//System.out.println(tipo);
+			if(tipo == teste) {
+				return teste;
+			}else if(tipo == teste2){
+				return teste2;
+			}else {					///CENTRALIZEI O PROBLEMA AQUI POIS O DADO QUE ESTÁ RECEBENDO DO BANCO NÃO É "ADMINISTRADOR" OU "COMUM"!
+				return "Comum";
+			}
+			//return tipo;
+		
+		} catch(Exception e) {
+			System.out.println("Erro: UsuarioDAO (BuscaTipoDAO)" + e.getMessage());			//Mensagem de erro
+			return "Erro!";
+		}
+	}
+	
 	public void CadastraUsuarioDAO(ModelUsuario usr) {
 		Connection conex = con.conectar();
 		
