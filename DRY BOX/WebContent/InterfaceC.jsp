@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<jsp:useBean id="model" class="model.ModelUsuario" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,18 +12,24 @@
 <script type="text/javascript" src="Scripts/interfaceScripts.js"></script>
 <link rel="stylesheet" href="estilo/estiloInterface.css">
 <!-- <link rel="icon" href="imagens/icone-adv.ico" type="image/x-icon" /> -->
-<title>Histórico de Movimentações</title>
+<title>DRY BOX Controller</title>
 </head>
-<body onload='listaHis(), menu()'>
+<body onload="menuComum()">
 
 	<!-- <img id='logo' src="imagens/logo.png" alt="LOGO"> -->
 
+	<!-- <button id="btnSair" onclick='sair()'>Sair</button> -->
+
 	<!-- MENU -->
-	<div id="menu"></div>
-	<br />
-	<br />
+	<div id="menuComum"></div>
 
-	<div id='saidaHis'></div>
+	<br />
+	<!-- 
+<form>
+    <label for="search"></label></td>
+    <input type="text" name="search" id='search' placeholder="Buscar..."></td>
+</form>
 
+ -->
 </body>
 </html>

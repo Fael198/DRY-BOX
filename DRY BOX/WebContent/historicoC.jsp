@@ -9,12 +9,12 @@
 <!-- <link rel="icon" href="imagens/icone-adv.ico" type="image/x-icon" /> -->
 <title>Histórico de Movimentações</title>
 </head>
-<body onload='listaHis(), menu()'>
+<body onload='listaHis(), menuComum()'>
 
 	<!-- <img id='logo' src="imagens/logo.png" alt="LOGO"> -->
 
 	<!-- MENU -->
-	<div id="menu"></div>
+	<div id="menuComum"></div>
 	<br />
 	<br />
 

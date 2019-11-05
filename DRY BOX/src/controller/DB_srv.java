@@ -253,6 +253,22 @@ public class DB_srv extends HttpServlet {
 			
 		}
 		
+		if(op == 12) //EXIBE MENU
+		{
+			RequestDispatcher menu;
+
+			menu = request.getRequestDispatcher("menu.jsp");
+			menu.forward(request, response);
+		}
+		
+		if(op == 13) //EXIBE MENU PARA O USUARIO COMUM
+		{
+			RequestDispatcher menuComum;
+
+			menuComum = request.getRequestDispatcher("menuComum.jsp");
+			menuComum.forward(request, response);
+		}
+		
 	}
 
 	

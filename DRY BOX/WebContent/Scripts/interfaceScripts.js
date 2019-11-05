@@ -285,8 +285,26 @@ function abrirConRemover(){
 	
 }*/
 
-function exibeMenus() {
+function menu(){
+	var ca = new XMLHttpRequest();
+	ca.onreadystatechange = function() {
+		if (ca.readyState == 4)
+			document.getElementById("menu").innerHTML = ca.responseText;
+	}
 	
+	ca.open("GET", "DB_srv?id=0&op=12", true);
+	ca.send();
+}
+
+function menuComum(){
+	var ca = new XMLHttpRequest();
+	ca.onreadystatechange = function() {
+		if (ca.readyState == 4)
+			document.getElementById("menuComum").innerHTML = ca.responseText;
+	}
+	
+	ca.open("GET", "DB_srv?id=0&op=13", true);
+	ca.send();
 }
 
 function abrirPopup() {

@@ -38,7 +38,7 @@ function verificarAcesso(){
 		if(ca.readyState == 4){
 			if(ca.responseText == 1){
 				alert("Bem vindo Usuario!");
-				window.location.href = "InterfaceComum.jsp";
+				window.location.href = "InterfaceC.jsp";
 				
 			} else if(ca.responseText == 0) {
 				alert("Bem vindo Administrador!");
