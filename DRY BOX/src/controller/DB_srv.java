@@ -240,10 +240,10 @@ public class DB_srv extends HttpServlet {
 			String tipo = usrDao.BuscarTipoDAO(usr);
 			System.out.println("Aqui: "+tipo);
 
-			if (tipo == "Comum") {
+			if (tipo.equals("Comum")) {
 				System.out.println("1");
 				out.println("1");
-			} else if(tipo == "Administrador"){
+			} else if(tipo.equals("Administrador")){
 				System.out.println("0");
 				out.println("0");
 			} else {
