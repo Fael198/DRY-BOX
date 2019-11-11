@@ -12,7 +12,7 @@ public class MaterialDAO {
 	
 	private Conexao con;
 	
-	public MaterialDAO() //CRIA A CONEXÃO COM O BANCO DE DADOS
+	public MaterialDAO() //CRIA A CONEXï¿½O COM O BANCO DE DADOS
 	{
 		con = new Conexao();
 	}
@@ -27,14 +27,14 @@ public class MaterialDAO {
 
 			// Executando o Query do BD
 			ResultSet c = ca.executeQuery();
-			int row = 0; // variável que vai contar as linhas (row) do BD
+			int row = 0; // variï¿½vel que vai contar as linhas (row) do BD
 			while (c.next()) {
 				row++;
 			}
 
 			System.out.println(row);
 
-			// validação
+			// validaï¿½ï¿½o
 			if (row == 1) {
 				return true;
 			} else {
@@ -84,6 +84,7 @@ public class MaterialDAO {
 				mat.setLocalizacao(res.getString("localizacao"));
 				mat.setDescricao(res.getString("descricao"));
 				mat.setQuantidadeMin(res.getInt("quantidadeMin"));
+				mat.setQuantidadeMax(res.getInt("quantidadeMax"));
 				listaMat.add(mat);
 
 			}
