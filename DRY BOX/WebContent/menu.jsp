@@ -14,6 +14,7 @@
 		<div class="dropdown-content">
 			<a href="cadastrarUsuario.jsp">Cadastrar</a> 
 			<a href="removerUsuario.jsp">Remover</a> 
+			<a href="alterarUsr.jsp">Alterar Dados</a>
 			<a href="usuarios.jsp">Exibir Usuários Cadastrados</a>
 		</div></li>
 

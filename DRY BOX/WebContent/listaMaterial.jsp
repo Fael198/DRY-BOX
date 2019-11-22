@@ -21,8 +21,7 @@
 		<c:forEach var="material" items="${listaMat}">
 
 			<tr>
-				<td id="selecionarMat"
-					onclick="janelaModificar(<c:out value="${material.id_material}" />)">
+				<td id="selecionarMat">
 					<img id="imgEditar" src="imagens/imgEditar.png">
 				</td>
 

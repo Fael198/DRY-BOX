@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.ModelHistorico;
+import model.ModelMaterial;
 import model.ModelUsuario;
 import util.Conexao;
 
@@ -216,6 +217,22 @@ public class UsuarioDAO {
 		} catch (Exception e) {
 			System.out.println("Erro: UsuarioDAO (listaUsuarioDAO). " + e.getMessage());
 			return null;
+		}
+	}
+	
+	public void AlterarUsuarioDAO(ModelUsuario usr) {
+
+		Connection conex = con.conectar();
+
+		try {
+			PreparedStatement ca = conex.prepareStatement("UPDATE usuario SET nome=?, senha=?, email=? WHERE usuario=?");
+			ca.setString(1, usr.getNome());
+			ca.setString(2, usr.getSenha());
+			ca.setString(3, usr.getEmail());
+			ca.setString(4, usr.getUsuario());
+			ca.execute();
+		} catch (Exception e) {
+			System.out.println("Erro: UsuarioDAO (AlterarUsuarioDAO)" + e.getMessage());
 		}
 	}
 }

@@ -278,6 +278,45 @@ public class DB_srv extends HttpServlet {
 			menuComum.forward(request, response);
 		}
 		
+		if(op == 14)
+		{
+			mtr.setPart_number(request.getParameter("partnumber"));
+			mtr.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
+			mtr.setLocalizacao(request.getParameter("localizacao"));
+			mtr.setDescricao(request.getParameter("descricao"));
+			mtr.setQuantidadeMin(Integer.parseInt(request.getParameter("quantidadeMin")));
+			mtr.setQuantidadeMax(Integer.parseInt(request.getParameter("quantidadeMax")));
+			
+			//Inserindo no Historico
+			his.setPart_number(request.getParameter("partnumber"));
+			his.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
+			his.setMovimentadoPor(idu);
+			his.setTipoMovimentacao("alterado");
+			////////////////////////
+			
+			if (mtrDao.BuscaMaterialDAO(mtr)){				//SE O MATERIAL EXISTIR...
+				mtrDao.AlterarMaterialDAO(mtr);				//... ALTERA A QUANTIDADE...
+				out.println("1");							//... E RETORNA '1'
+				hisDao.CadastraMovimentacaoDAO(his);		//ADICIONA INSERï¿½ï¿½O NO HISTORICO
+			}else {									 
+				out.println("0");							//...SENï¿½O RETORNA '0' INDICANDO QUE O MATERIAL SOLICITADO AINDA Nï¿½O SE ENCONTRA CADASTRADO!
+			}
+		}
+		
+		if(op == 15)
+		{
+			usr.setNome(request.getParameter("nome"));
+			usr.setSenha(request.getParameter("senha"));
+			usr.setUsuario(request.getParameter("usuario"));
+			usr.setEmail(request.getParameter("email"));
+			
+			if (usrDao.BuscarNomeUsuarioDAO(usr)){				//SE O MATERIAL EXISTIR...
+				usrDao.AlterarUsuarioDAO(usr);				//... ALTERA A QUANTIDADE...
+				out.println("1");							//... E RETORNA '1'
+			}else {									 
+				out.println("0");							//...SENï¿½O RETORNA '0' INDICANDO QUE O MATERIAL SOLICITADO AINDA Nï¿½O SE ENCONTRA CADASTRADO!
+			}
+		}
 	}
 
 	

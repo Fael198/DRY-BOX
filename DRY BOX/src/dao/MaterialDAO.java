@@ -136,4 +136,22 @@ public class MaterialDAO {
 			System.out.println("Erro: MaterialDAO ( RetirarMaterialDAO)" + e.getMessage());
 		}
 	}
+	
+	public void AlterarMaterialDAO(ModelMaterial mtr) {
+
+		Connection conex = con.conectar();
+
+		try {
+			PreparedStatement ca = conex.prepareStatement("UPDATE material SET quantidade=?, localizacao=?, descricao=?, quantidadeMin=?, quantidadeMax=? WHERE partnumber=?");
+			ca.setInt(1, mtr.getQuantidade());
+			ca.setString(2, mtr.getLocalizacao());
+			ca.setString(3, mtr.getDescricao());
+			ca.setInt(4, mtr.getQuantidadeMin());
+			ca.setInt(5, mtr.getQuantidadeMax());
+			ca.setString(6, mtr.getPart_number());
+			ca.execute();
+		} catch (Exception e) {
+			System.out.println("Erro: MaterialDAO (AlterarMaterialDAO)" + e.getMessage());
+		}
+	}
 }
