@@ -12,8 +12,10 @@ function cadastraUsuario()
 	} else{
 		var ca = new XMLHttpRequest();
 		ca.onreadystatechange = function() {
-			if (ca.readyState == 4)
-				alert("Usuario Cadastrado com Sucesso!");
+			if (ca.readyState == 4){
+				alert("Usuario cadastrado com sucesso!");
+				window.location.href = "usuarios.jsp";
+			}
 		}
 
 		ca.open("GET", "DB_srv?id=0&op=1"+"&nome="+nome+"&senha="+senha+"&usuario="+usuario+"&email="+email+"&tipo="+tipo, true);
@@ -128,6 +130,25 @@ function removerMat() {
 		}
 	}
 	ca.open("GET", "DB_srv?id=0&op=5&partnumber="+partnumber, true);
+	ca.send();
+}
+
+//REMOVER USUARIO
+function removerUsu() {
+	var nomeUsuario = document.getElementById("nomeUsuario").value;
+	
+	var ca = new XMLHttpRequest();
+	ca.onreadystatechange = function() {
+		if (ca.readyState == 4){
+			if(ca.responseText == 1){
+				alert("Usuario Removido!");
+				window.location.href = "usuarios.jsp";
+			} else {
+				alert("Usuario nao cadastrado!");
+			}
+		}
+	}
+	ca.open("GET", "DB_srv?id=0&op=4&nomeUsuario="+nomeUsuario, true);
 	ca.send();
 }
 
@@ -250,6 +271,28 @@ function abrirConRemover(){
 	var partnumber = document.getElementById("partnumberR").value;
 	
 	if(partnumber == ''){
+		
+		alert("Preencha os campos obrigatorios!");
+	}else {
+	
+		if (document.getElementById("popup").style.display == 'block') {
+			document.getElementById("popup").style.display = 'none';
+			document.getElementById("popupContent").style.display = 'none';
+		}
+	
+		else {
+			document.getElementById("popup").style.display = 'block';
+			document.getElementById("popupContent").style.display = 'block';
+		}
+	}
+}
+
+//POPUP DE CONFIRMAÇÃO DE REMOVER
+function abrirConRemoverU(){
+	
+	var nomeUsuario = document.getElementById("nomeUsuario").value;
+	
+	if(nomeUsuario == ''){
 		
 		alert("Preencha os campos obrigatorios!");
 	}else {

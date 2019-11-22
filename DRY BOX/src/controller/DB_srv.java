@@ -122,7 +122,16 @@ public class DB_srv extends HttpServlet {
 		
 		else if(op == 4) //REMOVER USUï¿½RIO
 		{
-			usrDao.RemoverUsuarioDAO(id);
+			usr.setUsuario(request.getParameter("nomeUsuario"));
+			
+			usrDao.BuscarNomeUsuarioDAO(usr);
+			
+			if (usrDao.BuscarNomeUsuarioDAO(usr)){				//SE O USUARIO EXISTIR...
+				usrDao.RemoverUsuarioDAO(usr);				//... REMOVE O USUARIO...
+				out.println("1");							//... E RETORNA '1'
+			}else {									 
+				out.println("0");							//...SENï¿½O RETORNA '0' INDICANDO QUE O MATERIAL SOLICITADO AINDA Nï¿½O SE ENCONTRA CADASTRADO!
+			}
 		}
 		
 		else if(op == 5) //REMOVER MATERIAL

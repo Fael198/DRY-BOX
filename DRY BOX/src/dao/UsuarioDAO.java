@@ -52,6 +52,38 @@ public class UsuarioDAO {
 		}
 	}
 	
+	public boolean BuscarNomeUsuarioDAO(ModelUsuario usr) {
+		Connection conex = con.conectar();
+
+		try {
+			
+			//Verifica se usuario está cadastrado
+			PreparedStatement ca = conex.prepareStatement("SELECT id, usuario FROM usuario WHERE usuario=?");	//Comando SQL (SELECT)
+			ca.setString(1, usr.getUsuario());
+			ca.execute();
+
+			// Executando o Query do BD
+			ResultSet c = ca.executeQuery();
+			int row = 0;// variável que vai contar as linhas (row) do BD
+			while (c.next()) {
+				row++;
+			}
+
+			System.out.println(row);
+
+			// Validação
+			if (row == 1) {
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (Exception e) {
+			System.out.println("Erro: UsuarioDAO (BuscaNomeUsuarioDAO)" + e.getMessage());			//Mensagem de erro
+			return false;
+		}
+	}
+	
 	public String BuscarTipoDAO(ModelUsuario usr) {
 		Connection conex = con.conectar();
 		
@@ -117,18 +149,16 @@ public class UsuarioDAO {
 		
 	}
 	
-	public void RemoverUsuarioDAO(int id)
+	public void RemoverUsuarioDAO(ModelUsuario usr)
 	{
 		Connection conex = con.conectar();
-		
+
 		try {
-			
-			PreparedStatement ca = conex.prepareStatement("DELETE FROM usuario WHERE id=?");			//Comando SQL (DELETE)
-			ca.setInt(1, id);
+			PreparedStatement ca = conex.prepareStatement("DELETE FROM usuario WHERE usuario=?");
+			ca.setString(1, usr.getUsuario());
 			ca.execute();
-			
 		} catch (Exception e) {
-			System.out.println("Erro: UsuarioDAO(RemoverUsuarioDAO)" + e.getMessage());					//Mensagem de erro
+			System.out.println("Erro: UsuarioDAO (RemoverUsuarioDAO)" + e.getMessage());
 		}
 	}
 	
