@@ -38,11 +38,11 @@ function verificarAcesso(){
 		if(ca.readyState == 4){
 			if(ca.responseText == 1){
 				alert("Bem vindo Usuario!");
-				window.location.href = "InterfaceC.jsp";
+				window.location.href = "estoqueC.jsp";
 				
 			} else if(ca.responseText == 0) {
 				alert("Bem vindo Administrador!");
-				window.location.href = "Interface.jsp"
+				window.location.href = "estoque.jsp"
 			}else {
 				alert("Erro!");
 			}
